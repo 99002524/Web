@@ -1,0 +1,21 @@
+package com.Exceptions;
+
+public class NameExistsException extends Exception {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	public NameExistsException() {
+		// TODO Auto-generated constructor stub
+	}
+
+	public NameExistsException(String message) {
+		super(message);
+		// TODO Auto-generated constructor stub
+	}
+
+	
+
+}
