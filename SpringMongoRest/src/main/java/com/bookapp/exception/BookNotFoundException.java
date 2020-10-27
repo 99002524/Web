@@ -1,6 +1,6 @@
 package com.bookapp.exception;
 
-public class BookNotFoundException extends Exception {
+public class BookNotFoundException extends RuntimeException{
 
 	public BookNotFoundException() {
 		// TODO Auto-generated constructor stub

@@ -49,15 +49,23 @@ public class BookServiceImpl implements BookService {
 	}
 
 	@Override
-	public List<Book> getBookByAuthor(String author) {
+	public List<Book> getBookByAuthor(String author) throws BookNotFoundException {
 		// TODO Auto-generated method stub
-		return bookRepository.findByAuthor(author);
+		List<Book> bookList= bookRepository.findByAuthor(author);
+		if(bookList.isEmpty()) {
+			throw new BookNotFoundException("Author not available");
 	}
-
+		return bookList;
+	
+	}
 	@Override
 	public List<Book> getBookByCategory(String category) {
 		// TODO Auto-generated method stub
-		return bookRepository.findByCategoryOrderByTitleAsc(category);
+		List<Book> bookList=bookRepository.findByCategoryOrderByTitleAsc(category);
+		if(bookList.isEmpty()) {
+			throw new BookNotFoundException("Category not available");
+	}
+		return bookList;
 	}
 
 	@Override
@@ -67,9 +75,9 @@ public class BookServiceImpl implements BookService {
 	}
 
 	@Override
-	public List<Book> findBooksBtTitleAndPrice(String title, Double price) {
+	public List<Book> findBooksByTitleAndPrice(String title, Double price) {
 		// TODO Auto-generated method stub
-		return bookRepository.findBooksBtTitleAndPrice(title, price);
+		return bookRepository.findBooksByTitleAndPrice(title, price);
 	}
 
 }

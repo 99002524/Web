@@ -16,6 +16,6 @@ public interface BookRepository extends MongoRepository<Book, Integer> {
 		List<Book> findByTitleAndAuthor(String title,String author);
 		
 		//JPQL
-		@Query("from Book b where b.title= ?1 and b.price> ?2")
-		List<Book> findBooksBtTitleAndPrice(String title,Double price);
+		@Query("{'title':?0 , 'price':{$eq:?1}}")
+		List<Book> findBooksByTitleAndPrice(String title,Double price);
 }
